@@ -1,2 +1,16 @@
 fastapi[standard]
 pydantic
+pydantic-settings
+sqlalchemy>=2.0
+aiosqlite
+greenlet
+openai-agents
+mcp
+python-jose[cryptography]
+bcrypt
+python-multipart
+fpdf2
+python-dotenv
+pytest
+pytest-asyncio
+httpx

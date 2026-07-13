@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+*.db
+evidence_store/
+tests/test_evidence_store/
+.pytest_cache/
