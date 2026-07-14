@@ -1,0 +1,14 @@
+.git
+.venv
+__pycache__
+**/__pycache__
+*.pyc
+.pytest_cache
+.vscode
+.env
+femas.db
+evidence_store
+Dockerfile
+docker-compose.yml
+.dockerignore
+README.md

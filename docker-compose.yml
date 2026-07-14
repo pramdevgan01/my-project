@@ -1,0 +1,19 @@
+services:
+  femas:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # Keep the DB and evidence files on the mounted volumes so they survive rebuilds
+      DATABASE_URL: sqlite+aiosqlite:////app/data/femas.db
+      EVIDENCE_STORAGE_DIR: /app/evidence_store
+    volumes:
+      - femas-data:/app/data
+      - evidence-store:/app/evidence_store
+    restart: unless-stopped
+
+volumes:
+  femas-data:
+  evidence-store:
