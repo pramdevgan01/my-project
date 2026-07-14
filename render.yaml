@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: femas-backend
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: OPENROUTER_API_KEY
+        sync: false # set this in the Render dashboard; never commit it
+      - key: OPENROUTER_BASE_URL
+        value: https://openrouter.ai/api/v1
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "480"
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:////app/data/femas.db
+      - key: EVIDENCE_STORAGE_DIR
+        value: /app/data/evidence_store
+      - key: AGENTS_MODEL
+        value: meta-llama/llama-3.3-70b-instruct:free
+      - key: MCP_BASE_URL
+        value: http://127.0.0.1:8000
+    # The free plan has no persistent disk: the SQLite DB and evidence files are
+    # reset on every deploy/restart. To keep data, switch to a paid plan and
+    # uncomment the disk below (it covers both, since both live under /app/data).
+    # disk:
+    #   name: femas-data
+    #   mountPath: /app/data
+    #   sizeGB: 1
